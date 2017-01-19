@@ -1,1 +1,1 @@
-#This is a readme
+Python checkers game using Tkinter for the GUI
