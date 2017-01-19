@@ -1,3 +1,5 @@
+#My first Python project
+#Author: Ryan Coopersmith (ryancoopersmith1@gmail.com)
 import Tkinter
 from Tkinter import *
 root = Tkinter.Tk()
@@ -11,7 +13,7 @@ player2 = raw_input("Enter the name of Player 2: ")
 #add code for a Python Checkers title here
 
 print "Python Checkers Rules: \n"
-print "1) To jump another piece, click on the piece you want to move and if the Jump" 
+print "1) To jump another piece, click on the piece you want to move and if the Jump"
 print "button is highlighted, click it and then move to your desired square. \n"
 print "2) To double jump, click on the piece you want to move, hit the Double Jump"
 print "button, click on the first square you wish to jump to then click on the"
@@ -38,7 +40,7 @@ blackLost = 0
 redLost = 0
 doubleJump = False
 
-while mainCounter < 58:	
+while mainCounter < 58:
 	mainCounter += 1
 	if counter < 8:
 		counter += 1
@@ -69,14 +71,14 @@ while mainCounter < 58:
 			Canv.create_oval(x, y, x2, y2,tags = "piece", fill = "red")
 		elif color == "gray" and mainCounter > 36:
 			Canv.create_oval(x, y, x2, y2,tags = "piece", fill = "black")
-	
+
 def callback(event):
 	global stopper
 	global prev
 	cur = Canv.find_withtag("current")[0]
 	if stopper % 2 == 0:
 		Canv.itemconfig(cur, outline = "yellow")
-		if stopper != 2:	
+		if stopper != 2:
 			Canv.itemconfig(prev, outline = "black")
 		stopper += 1
 	else:
@@ -86,7 +88,7 @@ def callback(event):
 	prev = cur
 	jumpPieces()
 	return prev
-	
+
 def movePieces(event):
 	global prev
 	global switch
@@ -114,7 +116,7 @@ def movePieces(event):
 					Canv.itemconfig(txt, text = player2, fill = "red")
 					Canv.itemconfig(prev, outline = "black")
 				Canv.create_rectangle(x + 144, y - 72, x + 72, y, tags = "filler square", fill = "gray")
-				Canv.create_rectangle(x, y, x + 72, y + 72, tags = "filler square", fill = "gray")		
+				Canv.create_rectangle(x, y, x + 72, y + 72, tags = "filler square", fill = "gray")
 				player2lost()
 			elif event.x < x and event.x > x - 144 and event.y > y and event.y < y + 216 and switch == True:
 				Canv.move(prev,-144,144)
@@ -195,21 +197,21 @@ def jumpPieces():
 		button.configure(command=Jump, bg = "yellow")
 		button2.configure(command=DoubleJump, bg = "yellow")
 	return jump
-	
+
 def replace(event):
 	global prev
 	cur = Canv.find_withtag("current")[0]
 	Canv.tag_lower("filler")
 	Canv.tag_raise(prev)
 	Canv.itemconfig(cur, tags = "nofiller")
-	
+
 def Jump():
 	global jump
 	jump = True
 	button.configure(bg = "white")
 	button2.configure(bg="white")
 	return jump
-	
+
 def DoubleJump():
 	global doubleJump
 	doubleJump = True
@@ -217,12 +219,12 @@ def DoubleJump():
 	button.configure(bg = "white")
 	Jump()
 	return doubleJump
-	
+
 def DoubleJumpOff():
 	global doubleJump
 	doubleJump = False
 	return doubleJump
-	
+
 def checkForKing():
 	global prev
 	global switch
@@ -232,14 +234,14 @@ def checkForKing():
 		Canv.itemconfig(prev, tags = "king", fill = "purple")
 	elif switch == False and y == 528:
 		Canv.itemconfig(prev, tags = "king", fill = "orange")
-	
+
 def kingCallback(event):
 	global stopper
 	global prev
 	cur = Canv.find_withtag("current")[0]
 	if stopper % 2 == 0:
 		Canv.itemconfig(cur, outline = "yellow")
-		if stopper != 2:	
+		if stopper != 2:
 			Canv.itemconfig(prev, outline = "black")
 		stopper += 1
 	else:
@@ -249,8 +251,8 @@ def kingCallback(event):
 	prev = cur
 	Canv.tag_bind("square", "<Button-1>", moveKing)
 	jumpPieces()
-	return prev	
-	
+	return prev
+
 def moveKing(event):
 	global prev
 	global switch
@@ -278,7 +280,7 @@ def moveKing(event):
 					Canv.itemconfig(txt, text = player2, fill = "red")
 					Canv.itemconfig(prev, outline = "black")
 				Canv.create_rectangle(x + 144, y - 72, x + 72, y, tags = "filler square", fill = "gray")
-				Canv.create_rectangle(x, y, x + 72, y + 72, tags = "filler square", fill = "gray")		
+				Canv.create_rectangle(x, y, x + 72, y + 72, tags = "filler square", fill = "gray")
 				player2lost()
 			elif event.x < x and event.x > x - 144 and event.y > y and event.y < y + 216 and switch == False:
 				Canv.move(prev,-144,144)
@@ -332,7 +334,7 @@ def moveKing(event):
 					Canv.itemconfig(txt, text = player1, fill = "black")
 					Canv.itemconfig(prev, outline = "black")
 				Canv.create_rectangle(x + 144, y - 72, x + 72, y, tags = "filler square", fill = "gray")
-				Canv.create_rectangle(x, y, x + 72, y + 72, tags = "filler square", fill = "gray")		
+				Canv.create_rectangle(x, y, x + 72, y + 72, tags = "filler square", fill = "gray")
 				player1lost()
 			if doubleJump == False:
 				Canv.tag_bind("square", "<Button-1>", movePieces)
@@ -379,8 +381,8 @@ def moveKing(event):
 				Canv.itemconfig(txt, text = player1, fill = "black")
 				Canv.create_rectangle(x, y, x + 72, y + 72, tags = "filler square", fill = "gray")
 			Canv.itemconfig(prev, outline = "black")
-		return switch	
-	
+		return switch
+
 def player2lost():
 	global redLost
 	redLost += 1
@@ -394,7 +396,7 @@ def player1lost():
 	if blackLost == 12:
 		Canv.itemconfig(txt, text = "Winner: " + player2 + "!", fill = "red")
 	return blackLost
-				 
+
 Canv.tag_bind("piece", "<Button-1>", callback)
 Canv.tag_bind("square", "<Button-1>", movePieces)
 Canv.tag_bind("filler", "<Button-1>", replace)
@@ -405,5 +407,5 @@ button2 = Button(root, text="Double Jump", bg="white")
 button2.pack(side="right", expand="True", fill="both")
 button = Button(root, text="Jump          ", bg="white")
 button.pack(side="left", expand="True", fill="both")
- 
+
 root.mainloop()
