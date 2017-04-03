@@ -1,5 +1,3 @@
-#My first Python project
-#Author: Ryan Coopersmith (ryancoopersmith1@gmail.com)
 import Tkinter
 from Tkinter import *
 root = Tkinter.Tk()
@@ -18,8 +16,6 @@ print "button is highlighted, click it and then move to your desired square. \n"
 print "2) To double jump, click on the piece you want to move, hit the Double Jump"
 print "button, click on the first square you wish to jump to then click on the"
 print "second square you wish to jump to. \n"
-print "3) Be responsible with your jumps! This program may detect more jump"
-print "opportunities than there are. \n"
 print "4) To become a king, reach the opposite end of the board"
 print "(black pieces will become purple, and red pieces will become orange). \n"
 print "5) Have fun! \n"

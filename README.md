@@ -1,1 +1,3 @@
-#Python checkers game using Tkinter for the GUI
+# Python Checkers
+
+## This is a functionally programmed Python checkers game utilizing Tkinter for the GUI
